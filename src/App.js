@@ -7,6 +7,8 @@ import AddNewClass from './components/addNewClass';
 
 class App extends Component {
   render() {
+    let currentUser = 'Phil';
+
     return (
       <div className="App">
         <nav>
@@ -15,7 +17,7 @@ class App extends Component {
           <span style={{padding: 15 }}>link to register a new class</span>
         </nav>
         <hr />
-        <AddNewClass />
+        <AddNewClass loggedInUser={ currentUser } />
         <hr />
         <section>Home Page</section>
         <hr />
