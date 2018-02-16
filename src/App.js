@@ -21,7 +21,7 @@ class App extends Component {
         <hr />
         <section>Home Page</section>
         <hr />
-        <ClassList />
+        <ClassList loggedInUser={ currentUser } />
         <hr />
         <section>classes signed up for</section>
         <section>Classes teaching</section>

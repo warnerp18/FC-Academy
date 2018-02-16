@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import { action_addNewClass } from '../actions/index';
+import { action_addNewCourse } from '../actions/index';
 
 class addNewClass extends Component {
   constructor(props) {
@@ -80,7 +80,7 @@ class addNewClass extends Component {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ newClass: action_addNewClass }, dispatch)
+  return bindActionCreators({ newClass: action_addNewCourse }, dispatch)
 }
 
 export default connect(null, mapDispatchToProps)(addNewClass);
