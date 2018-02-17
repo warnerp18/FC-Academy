@@ -26,7 +26,6 @@ class ClassList extends Component {
   render() {
     let user = this.props.loggedInUser;
     let { courses } = this.props;
-    console.log(courses);
 
     return (
       <ul className="classList">
@@ -47,7 +46,7 @@ class ClassList extends Component {
 
 function mapStateToProps(state) {
   return {
-    courses: state.classes
+    courses: state.courses
   };
 }
 
