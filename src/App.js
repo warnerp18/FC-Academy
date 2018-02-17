@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 import './App.css';
 
-import ClassList from './containers/classList';
-import AddNewClass from './components/addNewClass';
+import CourseList from './containers/courseList';
+import AddNewCourse from './components/addNewCourse';
 
 class App extends Component {
   render() {
@@ -17,11 +17,11 @@ class App extends Component {
           <span style={{padding: 15 }}>link to register a new class</span>
         </nav>
         <hr />
-        <AddNewClass loggedInUser={ currentUser } />
+        <AddNewCourse loggedInUser={ currentUser } />
         <hr />
         <section>Home Page</section>
         <hr />
-        <ClassList loggedInUser={ currentUser } />
+        <CourseList loggedInUser={ currentUser } />
         <hr />
         <section>classes signed up for</section>
         <section>Classes teaching</section>
