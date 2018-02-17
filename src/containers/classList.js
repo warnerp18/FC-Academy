@@ -1,29 +1,45 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 
-class ClassList extends Component {
+import Course from './course';
+import { action_addStudent } from '../actions';
 
-  renderList() {
-    return (
-      this.props.classes.map( classItem => {
-        return (
-          <li key={classItem.classTitle} className="classItem">
-            <h3>{classItem.classTitle}</h3>
-            <time>{classItem.date}</time>
-            <p>{classItem.duration}</p>
-            <h5>{classItem.location}</h5>
-            <h5>Teacher(s): {classItem.instructors.map(instructor => <span key={instructor}>{instructor}, </span> )}</h5>
-          </li> 
-        );
-      })
-    );
+class ClassList extends Component {
+  constructor(props) {
+    super(props);
+
+    this.signupForCourse = this.signupForCourse.bind(this);
   }
 
+  signupForCourse(e, course) {
+    let user = this.props.loggedInUser;
+
+    this.props.courses.map( stateclass => {
+      if (stateclass.id === course.id) {
+        return this.props.addStudent(course.id, user)
+      }
+      return stateclass;
+    })
+  }
+
+
   render() {
+    let user = this.props.loggedInUser;
+    let { courses } = this.props;
+    console.log(courses);
+
     return (
       <ul className="classList">
-        {this.renderList()}
+        {courses.map( course => {
+          return (
+            <Course 
+              key={course.classTitle} 
+              course={course} 
+              courseSignUp={this.signupForCourse}
+              user={user}
+            />
+          )
+        })}
       </ul>
     );
   }
@@ -31,8 +47,14 @@ class ClassList extends Component {
 
 function mapStateToProps(state) {
   return {
-    classes: state.classes 
+    courses: state.classes
   };
 }
 
-export default connect(mapStateToProps)(ClassList); 
+function mapDispatchToProps(dispatch) { 
+  return { 
+    addStudent: (courseId, user) => { dispatch(action_addStudent(courseId, user)) } 
+  } 
+} 
+
+export default connect(mapStateToProps, mapDispatchToProps)(ClassList);
